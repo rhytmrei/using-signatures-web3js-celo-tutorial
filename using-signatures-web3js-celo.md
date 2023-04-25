@@ -155,28 +155,13 @@ contract EXAMPLENFT is ERC721, Ownable {
     * @return s second 32 bytes
     * @return v final byte
     */
-   function splitSignature(bytes memory sig) private pure returns (bytes32 r, bytes32 s, uint8 v){
-     
-      // to split a signature its length must be 65 = 32(r) + 32(s) + 1(v)
-      require(sig.length == 65, "invalid signature length");
+   function splitSignature(bytes memory sig) private pure returns (bytes32 r, bytes32 s, uint8 v) {
+    require(sig.length == 65, "invalid signature length");
 
-      assembly {
-          /*
-          First 32 bytes stores the length of the signature
-          add(sig, 32) = pointer of sig + 32
-          effectively, skips first 32 bytes of signature
-          mload(p) loads next 32 bytes starting at the memory address p into memory
-          */
+    bytes32[3] memory parts = abi.decode(sig[1:], (bytes32[3]));
+    return (parts[0], parts[1], uint8(parts[2][31]));
+}
 
-
-          // first 32 bytes, after the length prefix
-          r := mload(add(sig, 32))
-          // second 32 bytes
-          s := mload(add(sig, 64))
-          // final byte (first byte of the next 32 bytes)
-          v := byte(0, mload(add(sig, 96)))
-      }
-  }
 
    /**
    * @dev verifies an owner of a signature
@@ -196,6 +181,7 @@ contract EXAMPLENFT is ERC721, Ownable {
        return false;
    }
 }
+
 
 ```
 
@@ -258,18 +244,15 @@ contract EXAMPLENFT is ERC721, Ownable {
    * @dev verifies an owner of a signature
     * @return bool
     */
-   function verify_signer(bytes32 _messageHash, bytes32 r, bytes32 s, uint8 v) private view returns (bool){
-       address signer = ECDSA.recover(_messageHash, v, r, s);
+   function verify_signer(bytes32 _messageHash, bytes memory _signature) private view returns (bool){
+    (bytes32 r, bytes32 s, uint8 v) = splitSignature(_signature);
+    address signer = ECDSA.recover(_messageHash, v, r, s);
 
-       require(signer != address(0), "ECDSA: invalid signature");
+    require(signer != address(0), "ECDSA: invalid signature");
 
-       if (signer == owner_) {
-           return true;
-       }
-
-       return false;
-   }
+    return signer == owner_;
 }
+
 
 ```
 
