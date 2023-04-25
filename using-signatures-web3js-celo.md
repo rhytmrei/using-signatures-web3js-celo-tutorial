@@ -15,6 +15,7 @@
     - [Creation of a Simple Contract for NFT Minting](#creation-of-a-simple-contract-for-nft-minting)
     - [First Usage Case](#first-usage-case)
     - [Second Usage Case](#second-usage-case)
+  - [Conclusion](#conclusion)
 
 ## Introduction
 
@@ -298,6 +299,10 @@ To check, I have changed the scope of the `verify_signer` function from private 
 As a result, we got the value **true**, which means that the address of the owner of the signature matches the address specified in the contract
 
 The presented methods of creating and signing transactions are simple, but they work like a charm, this will help us to keep the contract functions from outside access.
+
+
+## Conclusion
+In this tutorial, we have learned about signatures, why are they used, how to generate them using the web3.js library, and two case studies where it was used.
 
 
 [def]: github_assets
