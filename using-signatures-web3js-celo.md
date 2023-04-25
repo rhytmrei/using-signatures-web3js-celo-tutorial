@@ -1,32 +1,32 @@
-# USING SIGNATURES TO SECURE A CONTRACT ON CELO NETWORK.
+# Using Signatures to Secure a Smart Contract on Celo Network
 
-## INTRODUCTION
+## Introduction
 
-### What is a signature ?
+### What Is a Signature?
 When you want to send some tokens or interact with a contract, your wallet creates a “transaction” and sends it to a node on the CELO network which then broadcasts it to other nodes.
 
 When you initiate a transaction, you must prove to every node in the network that you are authorized to spend those funds.
 
 A transaction is just a message that contains information about the sender and recipient and the amount of tokens to be transferred (including a transaction fee).
 
-### What is ECDSA Encryption ? 
+### What Is Ecdsa Encryption? 
 ECDSA(Elliptic Curve Digital Signature Algorithm) is a cryptographic algorithm used to ensure that funds can only be spent by their rightful owners. While the private key is a secret number, known only to the person that generated it.
 
-### What is the purpose of using custom signatures ? 
+### What Is the Purpose of Using Custom Signatures? 
 For example, you have unprotected methods in your contract, so people can execute them from outside your contract. To limit access to your contract, the best option would be to use signatures.
 
-## REQUIREMENT
+## Requirements
 - A code editor to write JS code.
 - Installed [NodeJS](https://nodejs.org/en)
 - Installed [Metamask](https://metamask.io/)
-- Added [Alfajores](https://medium.com/defi-for-the-people/how-to-set-up-metamask-with-celo-912d698fcafe) Testnet to Metamask
+- Added the [Alfajores](https://medium.com/defi-for-the-people/how-to-set-up-metamask-with-celo-912d698fcafe) Testnet to Metamask
 - Claimed [CELO](https://faucet.celo.org/alfajores) Testnet tokens
   
-## PREREQUISITE 
+## Prerequisites
 - Basic knowledge of [Solidity](https://docs.soliditylang.org) and [web3js](https://web3js.readthedocs.io/en/v1.8.2/)
 - Basic understanding of how Blockchain and transactions work.
 
-##  What you will learn after this tutorial
+##  What You Will Learn After This Tutorial
 - How to generate signature using web3js.
 - How signatures work.
 - Two cases of using signatures.
@@ -82,7 +82,7 @@ The result shows that if we add the prefix 0x to each of these strings, we will 
 
 This leaves us with the choice of passing a signature, a **signature** element, or the three **r**, **s**, **v** values. Well, there is no difference, although in the first option we will need to divide a **signature** in the contract itself. Consider the contract methods for both cases.
 
-## CREATION OF A SIMPLE CONTRACT FOR NFT MINTING
+## Creation of a Simple Contract for NFT Minting
 
 First, let's go to the [Remix](http://remix.ethereum.org/) for writing a smart contract on the CELO network.
 
