@@ -11,10 +11,10 @@
   - [Prerequisites](#prerequisites)
   - [What You Will Learn After This Tutorial](#what-you-will-learn-after-this-tutorial)
   - [What We’ll Be Building](#what-well-be-building)
-- [Preparation](#preparation)
-  - [Creation of a Simple Contract for NFT Minting](#creation-of-a-simple-contract-for-nft-minting)
-  - [First Usage Case](#first-usage-case)
-  - [Second Usage Case](#second-usage-case)
+  - [Preparation](#preparation)
+    - [Creation of a Simple Contract for NFT Minting](#creation-of-a-simple-contract-for-nft-minting)
+    - [First Usage Case](#first-usage-case)
+    - [Second Usage Case](#second-usage-case)
 
 ## Introduction
 
@@ -50,7 +50,7 @@ For example, you have unprotected methods in your contract, so people can execut
 ## What We’ll Be Building
 As a real-world example, we'll create a simple contract for an NFT mint and create transaction signing functionality for it.
 
-# Preparation
+## Preparation
 
 Let's download the ready-made boilerplate project - [celo-boilerplate-web-dapp](https://github.com/dacadeorg/celo-boilerplate-web-dapp)
 
@@ -98,7 +98,7 @@ The result shows that if we add the prefix 0x to each of these strings, we will 
 
 This leaves us with the choice of passing a signature, a **signature** element, or the three **r**, **s**, **v** values. Well, there is no difference, although in the first option we will need to divide a **signature** in the contract itself. Consider the contract methods for both cases.
 
-## Creation of a Simple Contract for NFT Minting
+### Creation of a Simple Contract for NFT Minting
 
 First, let's go to the [Remix](http://remix.ethereum.org/) for writing a smart contract on the CELO network.
 
@@ -122,7 +122,7 @@ Choose a compiler version not lower than the one specified in the initial contra
 
 Next, contract code variants using the signature function will be presented. Please pay attention to the written comments, I tried to briefly explain what is happening and how. As a result, the code will look like this.
 
-## First Usage Case
+### First Usage Case
 
 ```js
 // SPDX-License-Identifier: MIT
@@ -223,7 +223,7 @@ Note that openzeppelin's ECDSA implementation has been used, this fixes the foll
 - Signatures are malleable, meaning you might be able to create a second also valid signature for the same data. In our case we are not using the signature data itself (which one may do as an id for example).
 - An attacker can construct a hash and signature that looks valid if the hash is not computed within the contract itself.
 
-## Second Usage Case
+### Second Usage Case
 
 Now let's write the second version of our code, where we know the variables v, r, s. In this case, we don't need the splitSignature function to split the signature.
 
