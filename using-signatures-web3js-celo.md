@@ -1,5 +1,21 @@
 # Using Signatures to Secure a Smart Contract on Celo Network
 
+## Table of Content
+- [Using Signatures to Secure a Smart Contract on Celo Network](#using-signatures-to-secure-a-smart-contract-on-celo-network)
+  - [Table of Content](#table-of-content)
+  - [Introduction](#introduction)
+    - [What Is a Signature?](#what-is-a-signature)
+    - [What Is Ecdsa Encryption?](#what-is-ecdsa-encryption)
+    - [What Is the Purpose of Using Custom Signatures?](#what-is-the-purpose-of-using-custom-signatures)
+  - [Requirements](#requirements)
+  - [Prerequisites](#prerequisites)
+  - [What You Will Learn After This Tutorial](#what-you-will-learn-after-this-tutorial)
+  - [What We’ll Be Building](#what-well-be-building)
+- [Preparation](#preparation)
+  - [Creation of a Simple Contract for NFT Minting](#creation-of-a-simple-contract-for-nft-minting)
+  - [First Usage Case](#first-usage-case)
+  - [Second Usage Case](#second-usage-case)
+
 ## Introduction
 
 ### What Is a Signature?
