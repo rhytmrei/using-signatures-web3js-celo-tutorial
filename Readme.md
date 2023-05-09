@@ -12,6 +12,7 @@
   - [What You Will Learn After This Tutorial](#what-you-will-learn-after-this-tutorial)
   - [What We’ll Be Building](#what-well-be-building)
   - [Preparation](#preparation)
+    - [How to access a contract from outside](#how-to-access-a-contract-from-outside)
     - [Creation of a Simple Contract for NFT Minting](#creation-of-a-simple-contract-for-nft-minting)
     - [First Usage Case](#first-usage-case)
     - [Second Usage Case](#second-usage-case)
@@ -20,17 +21,21 @@
 ## Introduction
 
 ### What Is a Signature?
-When you want to send some tokens or interact with a contract, your wallet creates a “transaction” and sends it to a node on the CELO network which then broadcasts it to other nodes.
+A mathematical method called a crypto signature, sometimes referred to as a digital signature or electronic signature, is used to confirm the legitimacy and consistency of a digital message, document, or transaction.
 
-When you initiate a transaction, you must prove to every node in the network that you are authorized to spend those funds.
+In cryptocurrencies, a digital signature is used to both validate transactions on the blockchain network and to confirm the ownership of a specific asset, such as a Bitcoin or CELO. A private key, which is a secret code known only to the asset's owner, is used to establish a digital signature. Each transaction's unique digital signature is created using the private key and confirmed using the corresponding public key, which is made available to all users on the network.
 
-A transaction is just a message that contains information about the sender and recipient and the amount of tokens to be transferred (including a transaction fee).
+The transaction cannot be changed or forged, and the sender of the transaction is confirmed by a digital signature. This provides a secure and reliable method for transferring assets on the blockchain network, without the need for intermediaries such as banks or financial institutions.
 
 ### What Is Ecdsa Encryption? 
 [ECDSA(Elliptic Curve Digital Signature Algorithm)](https://www.encryptionconsulting.com/education-center/what-is-ecdsa/) is a cryptographic algorithm used to ensure that funds can only be spent by their rightful owners. While the private key is a secret number, known only to the person that generated it.
 
+Overall, the benefits of using ECDSA signatures make it a popular choice for securing transactions on a blockchain. Its robust security, efficiency, scalability, standardization, and interoperability make it a reliable and widely accepted method for digital signature authentication.
+
 ### What Is the Purpose of Using Custom Signatures? 
 For example, you have unprotected methods in your contract, so people can execute them from outside your contract. To limit access to your contract, the best option would be to use signatures.
+
+Custom signatures are used to provide enhanced security, flexibility, and privacy for digital transactions. By tailoring the signature algorithm to the specific needs of an application or use case, developers can create more secure digital signature systems that meet the unique requirements of their users.
 
 ## Requirements
 - A code editor to write JS code.
@@ -99,13 +104,35 @@ The result shows that if we add the prefix 0x to each of these strings, we will 
 
 This leaves us with the choice of passing a signature, a **signature** element, or the three **r**, **s**, **v** values. Well, there is no difference, although in the first option we will need to divide a **signature** in the contract itself. Consider the contract methods for both cases.
 
-### Creation of a Simple Contract for NFT Minting
+### How to access a contract from outside
 
-First, let's go to the [Remix](http://remix.ethereum.org/) for writing a smart contract on the CELO network.
+To access the contract methods, the user only needs to know the contract address and the .abi or .sol code of the contract.
+
+To see that, let's go to the [CELO explorer](https://explorer.celo.org/alfajores) and find any contract. For example we will try access this random contract.
+
+[<p align="center"><img src="github_assets/image-7.png"></p>][def]
+
+Here we see a contract address, for the next step open a "Code" toggle and go down to the "Contract ABI" label.
+
+[<p align="center"><img src="github_assets/image-8.jpg"></p>][def]
+
+We have a contract adress and .abi code, so now let's use the [Remix](http://remix.ethereum.org/) to access a contract.
 
 > Remix IDE, is a no-setup tool with a GUI for developing smart contracts. Remix plays well with other tools and allows for a simple deployment process to the chain of your choice. Remix is famous for its visual debugger and other tools. 
 
 > Using Remix IDE allows you to easily create, save and deploy contracts. An important advantage of such a system is the emulation of the deployment of the contract with the help of an arranged "artificial" wallet, so to test the contract in local conditions, you do not even need to have a wallet and tokens to pay fees.
+
+Create a new file with extension .abi and go the "Deploy" panel, there we can put an adress of an already compiled contract.
+
+[<p align="center"><img src="github_assets/image-9.jpg"></p>][def]
+
+After a contract is successfully loaded, we can easily interact with its methods and data. 
+
+[<p align="center"><img src="github_assets/image-10.jpg"></p>][def]
+
+On a blockchain, contracts are open to all users and anyone can interact with them, that's why contract developers need to limit access to contract methods from the outside.
+
+### Creation of a Simple Contract for NFT Minting
 
 Since the method of creating signatures is suitable for any contract method, we will make, for example, a smart contract for minting NFTs.
 
@@ -302,7 +329,10 @@ The presented methods of creating and signing transactions are simple, but they 
 
 
 ## Conclusion
-In this tutorial, we have learned about signatures, why are they used, how to generate them using the web3.js library, and two case studies where it was used.
+In conclusion, using signatures to secure a smart contract is a crucial step towards ensuring the integrity and safety of blockchain transactions. By implementing multi-signature functionality, developers can reduce the risk of malicious attacks and unauthorized modifications to the contract. Additionally, the use of digital signatures allows for greater accountability and transparency in transactions, which can improve trust between parties. While there may be some additional complexity involved in implementing signature-based security measures, the benefits of increased security and reliability make it a worthwhile investment.
 
+We have learned about signatures, why are they used, how to generate them using the web3.js library, and two case studies where it was used.
+
+For maximum protection of your contract, as a next step, I suggest you review the official [article](https://ethereum.org/gl/developers/docs/smart-contracts/security/) and [Ethereum Smart Contract Security Best Practices](https://consensys.github.io/smart-contract-best-practices/).
 
 [def]: github_assets
